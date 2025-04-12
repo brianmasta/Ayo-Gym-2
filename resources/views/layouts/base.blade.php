@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @if(env('IS_DEMO')) 
+    {{-- @if(env('IS_DEMO')) 
         <link rel="canonical" href="https://themesberg.com/product/laravel/volt-admin-dashboard-template">
         <meta  name="keywords" content="themesberg, updivision, html dashboard, laravel, livewire, laravel livewire, alpine.js, html css dashboard laravel, Volt Laravel Admin Dashboard, livewire volt dashboard, volt admin, livewire dashboard, livewire admin, web dashboard, bootstrap 5 dashboard laravel, bootstrap 5, css3 dashboard, bootstrap 5 admin laravel, volt dashboard bootstrap 5 laravel, frontend, responsive bootstrap 5 dashboard, volt dashboard, volt laravel bootstrap 5 dashboard"></meta>
         <meta  name="description" content="Volt Laravel Admin Dashboard features dozens of UI components and a Laravel backend with Livewire & Alpine.js"></meta>
@@ -21,7 +21,7 @@
         <meta  property="og:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-laravel-dashboard/volt-free-laravel-dashboard.jpg"></meta>
         <meta  property="og:description" content="Volt Laravel Admin Dashboard features dozens of UI components and a Laravel backend with Livewire & Alpine.js"></meta>
         <meta  property="og:site_name" content="Themesberg"></meta>
-    @endif
+    @endif --}}
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="../../assets/img/favicon/apple-touch-icon.png" sizes="180x180">
@@ -29,7 +29,7 @@
     <link rel="icon" href="../../assets/img/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
 
     <link rel="mask-icon" href="../../assets/img/favicon/safari-pinned-tab.svg" color="#563d7c">
-    <link rel="icon" href="../../assets/img/favicon/favicon.ico">
+    <link rel="icon" href="../../assets/img/favicon/favicon-32x32.png">
     <meta name="msapplication-config" content="../../assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#563d7c">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
@@ -53,6 +53,8 @@
     
     <!-- Volt CSS -->
     <link type="text/css" href="/css/volt.css" rel="stylesheet">
+
+
 
     @livewireStyles
 
@@ -93,11 +95,18 @@
     <!-- Simplebar -->
     <script src="/assets/js/simplebar.min.js"></script>
 
+
+
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     
     <!-- Volt JS -->
     <script src="/assets/js/volt.js"></script>
+
+    <script src="/assets/js/jquery.min.js"></script>
+
+    <!-- jam -->
+    <script src="/assets/js/jam.js"></script>
 
     @if(env('IS_DEMO')) 
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -123,7 +132,7 @@
 
 </head>
 
-<body>
+<body onload="realtimeClock()">
     @if(env('IS_DEMO')) 
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THQTXJ7" height="0" width="0"

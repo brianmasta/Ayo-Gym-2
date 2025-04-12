@@ -1,30 +1,42 @@
 <?php
 
-use App\Http\Livewire\BootstrapTables;
-use App\Http\Livewire\Components\Buttons;
-use App\Http\Livewire\Components\Forms;
-use App\Http\Livewire\Components\Modals;
-use App\Http\Livewire\Components\Notifications;
-use App\Http\Livewire\Components\Typography;
-use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Lock;
+use App\Http\Livewire\Index;
+use App\Http\Livewire\Kelas;
+use App\Http\Livewire\Users;
+use App\Http\Livewire\Barang;
 use App\Http\Livewire\Err404;
 use App\Http\Livewire\Err500;
+use App\Http\Livewire\Profile;
+use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\NonMember;
+use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\DataMember;
+use App\Http\Livewire\ScanMember;
+use App\Http\Livewire\PaketMember;
+use App\Http\Livewire\LoginExample;
+use App\Http\Livewire\Transactions;
+use App\Http\Livewire\UpgradeToPro;
+use App\Http\Livewire\Auth\Register;
+use App\Http\Livewire\DataPenjualan;
 use App\Http\Livewire\ResetPassword;
 use App\Http\Livewire\ForgotPassword;
-use App\Http\Livewire\Lock;
-use App\Http\Livewire\Auth\Login;
-use App\Http\Livewire\Profile;
-use App\Http\Livewire\Auth\Register;
-use App\Http\Livewire\ForgotPasswordExample;
-use App\Http\Livewire\Index;
-use App\Http\Livewire\LoginExample;
+use App\Http\Livewire\PaketNonMember;
 use App\Http\Livewire\ProfileExample;
-use App\Http\Livewire\RegisterExample;
-use App\Http\Livewire\Transactions;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\BootstrapTables;
+use App\Http\Livewire\RegisterExample;
+use App\Http\Livewire\BiayaPendaftaran;
+use App\Http\Livewire\Components\Forms;
+use App\Http\Livewire\PembayaranMember;
+use App\Http\Livewire\RegistrasiMember;
+use App\Http\Livewire\Components\Modals;
+use App\Http\Livewire\Components\Buttons;
+use App\Http\Livewire\TransaksiPenjualan;
 use App\Http\Livewire\ResetPasswordExample;
-use App\Http\Livewire\UpgradeToPro;
-use App\Http\Livewire\Users;
+use App\Http\Livewire\Components\Typography;
+use App\Http\Livewire\ForgotPasswordExample;
+use App\Http\Livewire\Components\Notifications;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,4 +80,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/forms', Forms::class)->name('forms');
     Route::get('/modals', Modals::class)->name('modals');
     Route::get('/typography', Typography::class)->name('typography');
+
+    Route::get('/biaya-pendaftaran', BiayaPendaftaran::class)->name('biaya-pendaftaran');
+    Route::get('/kelas', Kelas::class)->name('kelas');
+    Route::get('/paket-member', PaketMember::class)->name('paket-member');
+    Route::get('/paket-non-member', PaketNonMember::class)->name('paket-non-member');
+    Route::get('/barang', Barang::class)->name('barang');
+    Route::get('/data-member', DataMember::class)->name('data-member');
+    Route::get('/registrasi-member', RegistrasiMember::class)->name('registrasi-member');
+    Route::get('/pembayaran-member', PembayaranMember::class)->name('pembayaran-member');
+    Route::get('/scan-member', ScanMember::class)->name('scan-member');
+    Route::get('/non-member', NonMember::class)->name('non-member');
+    Route::get('/transaksi-penjualan', TransaksiPenjualan::class)->name('transaksi-penjualan');
+    Route::get('/data-penjualan', DataPenjualan::class)->name('data-penjualan');
 });

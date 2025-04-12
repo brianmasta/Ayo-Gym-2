@@ -33,10 +33,10 @@
       <li class="nav-item">
         <a href="/dashboard" class="nav-link d-flex align-items-center">
           <span class="sidebar-icon me-3">
-            <img src="/assets/img/brand/light.svg" height="20" width="20" alt="Volt Logo">
+            <img src="/assets/img/brand/ayogym.svg" height="20" width="20" alt="Volt Logo">
           </span>
           <span class="mt-1 ms-1 sidebar-text">
-            Volt Laravel
+            AYO GYM
           </span>
         </a>
       </li>
@@ -52,10 +52,15 @@
       </li>
       <li class="nav-item">
         <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-          data-bs-target="#submenu-laravel" aria-expanded="true">
+          data-bs-target="#master-data" aria-expanded="true">
           <span>
-            <span class="sidebar-icon"><i class="fab fa-laravel me-2" style="color: #fb503b;"></i></span>
-            <span class="sidebar-text" style="color: #fb503b;">Laravel Examples</span>
+            <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z"
+                clip-rule="evenodd"></path>
+            </svg></span>
+            <span class="sidebar-text" style="color: #fb503b;">Master Data</span>
           </span>
           <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +69,37 @@
                 clip-rule="evenodd"></path>
             </svg></span>
         </span>
-        <div class="multi-level collapse show" role="list" id="submenu-laravel" aria-expanded="false">
+        <div class="multi-level collapse show" role="list" id="master-data" aria-expanded="false">
+          <ul class="flex-column nav">
+            {{-- tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'biaya-pendaftaran' ? 'active' : '' }}">
+              <a href="/biaya-pendaftaran" class="nav-link" wire:navigate>
+                <span class="sidebar-text">Biaya Pendaftaran</span>
+              </a>
+            </li>
+            {{-- tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'kelas' ? 'active' : '' }}">
+              <a href="/kelas" class="nav-link" wire:navigate>
+                <span class="sidebar-text">Kelas</span>
+              </a>
+            </li>
+            {{-- tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'paket-member' ? 'active' : '' }}">
+              <a href="/paket-member" class="nav-link">
+                <span class="sidebar-text">Paket Member</span>
+              </a>
+            </li>
+            {{-- tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'paket-non-member' ? 'active' : '' }}">
+              <a href="/paket-non-member" class="nav-link">
+                <span class="sidebar-text">Paket Non Member</span>
+              </a>
+            </li>
+            <li class="nav-item {{ Request::segment(1) == 'barang' ? 'active' : '' }}">
+              <a href="/barang" class="nav-link">
+                <span class="sidebar-text">Barang</span>
+              </a>
+            </li>
           <ul class="flex-column nav">
             <li class="nav-item {{ Request::segment(1) == 'profile' ? 'active' : '' }}">
               <a href="/profile" class="nav-link">
@@ -80,20 +115,112 @@
         </div>
       </li>
       <li class="nav-item">
-        <a href="https://themesberg.com/product/laravel/volt-pro-admin-dashboard-template" target="_blank" class="nav-link d-flex justify-content-between">
+        <span
+          class="nav-link {{ Request::segment(1) !== 'member' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
+          data-bs-toggle="collapse" data-bs-target="#member">
           <span>
             <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-                </path>
+                <path fill-rule="evenodd"
+                  d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+                  clip-rule="evenodd"></path>
               </svg></span>
-            <span class="sidebar-text">Kanban </span>
+            <span class="sidebar-text">Member</span>
           </span>
-          <span>
-            <span class="badge badge-sm bg-secondary ms-1">Pro</span>
-          </span>
+          <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"></path>
+            </svg></span>
+        </span>
+        <div class="multi-level collapse {{ Request::segment(1) == 'data-member' ? 'show' : '' }}" role="list"
+          id="member" aria-expanded="false">
+          <ul class="flex-column nav">
+            {{-- Tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'data-member' ? 'active' : '' }}">
+              <a class="nav-link" href="/data-member">
+                <span class="sidebar-text">Data Member</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="flex-column nav">
+            {{-- Tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'registrasi-member' ? 'active' : '' }}">
+              <a class="nav-link" href="/registrasi-member">
+                <span class="sidebar-text">Registrasi Member</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="flex-column nav">
+            {{-- Tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'pembayaran-member' ? 'active' : '' }}">
+              <a class="nav-link" href="pembayaran-member">
+                <span class="sidebar-text">Pembayaran Member</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="flex-column nav">
+            {{-- Tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'scan-member' ? 'active' : '' }}">
+              <a class="nav-link" href="scan-member">
+                <span class="sidebar-text">Scan Member</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item {{ Request::segment(1) == 'non-member' ? 'active' : '' }}">
+        <a href="/non-member" class="nav-link">
+          <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
+              <path fill-rule="evenodd"
+                d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"
+                clip-rule="evenodd"></path>
+            </svg></span>
+          <span class="sidebar-text">Non Member</span>
         </a>
+      </li>
+      <li class="nav-item">
+        <span
+          class="nav-link {{ Request::segment(1) !== 'bootstrap-tables' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
+          data-bs-toggle="collapse" data-bs-target="#transaksi-app">
+          <span>
+            <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                  clip-rule="evenodd"></path>
+              </svg></span>
+            <span class="sidebar-text">Transaksi</span>
+          </span>
+          <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"></path>
+            </svg></span>
+        </span>
+        <div class="multi-level collapse {{ Request::segment(1) == 'bootstrap-tables' ? 'show' : '' }}" role="list"
+          id="transaksi-app" aria-expanded="false">
+          <ul class="flex-column nav">
+            {{-- Tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'transaksi-penjualan' ? 'active' : '' }}">
+              <a class="nav-link" href="/transaksi-penjualan">
+                <span class="sidebar-text">Transaksi Penjualan</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="flex-column nav">
+            {{-- Tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'data-penjualan' ? 'active' : '' }}">
+              <a class="nav-link" href="/data-penjualan">
+                <span class="sidebar-text">Data Penjualan</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
       <li class="nav-item {{ Request::segment(1) == 'transactions' ? 'active' : '' }}">
         <a href="/transactions" class="nav-link">
@@ -107,40 +234,6 @@
           <span class="sidebar-text">Transactions</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a href="https://themesberg.com/product/laravel/volt-pro-admin-dashboard-template" target="_blank" class="nav-link d-flex justify-content-between">
-          <span>
-            <span class="sidebar-icon">
-              <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z"
-                  clip-rule="evenodd"></path>
-              </svg>
-            </span>
-            <span class="sidebar-text">Calendar</span>
-          </span>
-          <span>
-            <span class="badge badge-sm bg-secondary ms-1">Pro</span>
-          </span>
-        </a>
-        </li>
-      <li class="nav-item">
-        <a href="https://themesberg.com/product/laravel/volt-pro-admin-dashboard-template" target="_blank" class="nav-link d-flex justify-content-between">
-          <span>
-            <span class="sidebar-icon">
-              <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                  clip-rule="evenodd"></path>
-              </svg>
-            </span>
-            <span class="sidebar-text">Map</span>
-          </span>
-          <span>
-            <span class="badge badge-sm bg-secondary ms-1">Pro</span>
-          </span>
-        </a>
-        </li>
       <li class="nav-item">
         <span
           class="nav-link {{ Request::segment(1) !== 'bootstrap-tables' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
@@ -299,27 +392,27 @@
                 d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
                 clip-rule="evenodd"></path>
             </svg></span>
-          <span class="sidebar-text">Documentation </span> <span><span
+          <span class="sidebar-text">Ayo Gym - App </span> <span><span
               class="badge badge-sm bg-secondary ms-1">v1.0</span></span>
         </a>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a href="https://themesberg.com" target="_blank" class="nav-link d-flex align-items-center">
           <span class="sidebar-icon me-2">
             <img class="me-2" src="/assets/img/themesberg.svg" height="20" width="20" alt="Themesberg Logo">
           </span>
           <span class="sidebar-text">Themesberg</span>
         </a>
-      </li>
-      <li class="nav-item">
+      </li> --}}
+      {{-- <li class="nav-item">
         <a href="https://updivision.com" target="_blank" class="nav-link d-flex align-items-center">
           <span class="sidebar-icon me-2">
             <img class="me-2" src="/assets/img/updivision.png" height="20" width="20" alt="Themesberg Logo">
           </span>
           <span class="sidebar-text">Updivision</span>
         </a>
-      </li>
-      <li class="nav-item">
+      </li> --}}
+      {{-- <li class="nav-item">
         <a href="/upgrade-to-pro"
           class="btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro">
           <span class="sidebar-icon d-inline-flex align-items-center justify-content-center">
@@ -331,7 +424,7 @@
           </span>
           <span>Upgrade to Pro</span>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </div>
 </nav>

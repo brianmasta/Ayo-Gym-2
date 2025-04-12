@@ -1,9 +1,10 @@
 <x-layouts.base>
 
 
-    @if(in_array(request()->route()->getName(), ['dashboard', 'profile', 'profile-example', 'users', 'bootstrap-tables', 'transactions',
+    @if(in_array(request()->route()->getName(), ['dashboard', 'profile', 'profile-example', 'users', 'biaya-pendaftaran', 'bootstrap-tables', 'transactions',
     'buttons',
-    'forms', 'modals', 'notifications', 'typography', 'upgrade-to-pro']))
+    'forms', 'modals', 'notifications', 'typography', 'upgrade-to-pro', 'kelas', 'paket-member', 'paket-non-member', 'barang', 'data-member', 'registrasi-member',
+    'pembayaran-member', 'scan-member', 'non-member', 'transaksi-penjualan', 'data-penjualan',]))
 
     {{-- Nav --}}
     @include('layouts.nav')
