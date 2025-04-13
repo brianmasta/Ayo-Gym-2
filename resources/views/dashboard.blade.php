@@ -1,3 +1,4 @@
+<div>
 <title>Volt Laravel Dashboard</title>
 <div class="py-4">
     <div class="dropdown">
@@ -565,4 +566,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

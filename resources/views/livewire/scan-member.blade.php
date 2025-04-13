@@ -1,3 +1,5 @@
+
+<div>
 <title>Ayo Gym Dashboard - Scan Member</title>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
@@ -28,10 +30,49 @@
     <h2 class="h5 mb-4">Cari ID Member</h2>
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="email">ID Member</label>
+            <label for="id_member">ID Member</label>
             <input type="text" class="form-control" id="id_member" aria-describedby="ID Member">
             <small id="id_member" class="form-text text-muted">We'll never share your ID Member with anyone else.</small>
         </div>
     </div>
 
+</div>
+<div class="card card-body border-0 shadow mb-4">
+    <h2 class="h5 mb-4">Detail Member</h2>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="email">ID Member</label>
+            <input type="text" class="form-control" id="id_member" aria-describedby="ID Member" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="nama-member">Nama Member</label>
+            <input type="text" class="form-control" id="nama-member" aria-describedby="Nama Member" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="tanggal-expire">Tanggal Expire</label>
+            <input type="text" class="form-control" id="tanggal-expire" aria-describedby="13-04-2025" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="tanggal-bayar">Tanggal Bayar</label>
+            <input type="text" class="form-control" id="tanggal-bayar" aria-describedby="13-04-2025" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="nama-kelas">Nama Kelas</label>
+            <input type="text" class="form-control" id="nama-kelas" aria-describedby="Nama Kelas" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="paket-program">Paket Program</label>
+            <input type="text" class="form-control" id="paket-program" aria-describedby="Nama Paket" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="biaya-bulanan">Biaya Bulanan</label>
+            <input type="text" class="form-control" id="biaya-bulanan" aria-describedby="biaya bulanan" disabled>
+        </div>
+
+    </div>
+    <div class="col-md-6 mb-3">
+        <button class="btn btn-success" type="button">Simpan</button>
+        <button class="btn btn-danger" type="button">Kembali</button>
+    </div>
+</div>
 </div>
