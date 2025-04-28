@@ -9,7 +9,9 @@
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.6",
-        "livewire/livewire": "^2.8"
+        "livewire/livewire": "^3.0",
+        "midtrans/midtrans-php": "^2.6",
+        "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^2.0",

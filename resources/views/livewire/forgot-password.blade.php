@@ -9,12 +9,12 @@
                     <div class="signin-inner my-3 my-lg-0 bg-white shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
                         <h1 class="h3">Forgot your password?</h1>
                         <p class="mb-4">Don't fret! Just type in your email and we will send you a code to reset your password!</p>
-                        <form wire:submit.prevent="recoverPassword" action="#" method="POST">
+                        <form wire:submit="recoverPassword" action="#" method="POST">
                             <!-- Form -->
                             <div class="mb-4">
                                 <label for="email">Your Email</label>
                                 <div class="input-group">
-                                    <input wire:model='email' type="email" class="form-control" id="email" placeholder="john@company.com" required autofocus>
+                                    <input wire:model.live='email' type="email" class="form-control" id="email" placeholder="john@company.com" required autofocus>
                                 </div>  
                                 @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                             </div>

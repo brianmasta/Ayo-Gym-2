@@ -3,18 +3,12 @@
     <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
       <div class="d-flex align-items-center">
         <div class="avatar-lg me-4">
-          <img src="/assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white"
+          <img src="/assets/img/team/user.jpg" class="card-img-top rounded-circle border-white"
             alt="Bonnie Green">
         </div>
-        <div class="d-block">
-          <h2 class="h5 mb-3">Hi, Jane</h2>
-          <a href="/login" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
-            <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-            </svg>
-            Sign Out
+        <div class="d-block" >
+          <h2 class="h5 mb-3">{{  auth()->user()->first_name ? auth()->user()->first_name . ' ' . auth()->user()->last_name : 'User Name'}}</h2>
+          <a class="btn btn-secondary btn-sm d-inline-flex align-items-center"><livewire:logout />
           </a>
         </div>
       </div>
@@ -36,7 +30,7 @@
             <img src="/assets/img/brand/ayogym.svg" height="20" width="20" alt="Volt Logo">
           </span>
           <span class="mt-1 ms-1 sidebar-text">
-            AYO GYM
+            AG - Management
           </span>
         </a>
       </li>
@@ -50,6 +44,7 @@
           <span class="sidebar-text">Dashboard</span>
         </a>
       </li>
+      @can('admin')
       <li class="nav-item">
         <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
           data-bs-target="#master-data" aria-expanded="true">
@@ -71,53 +66,18 @@
         </span>
         <div class="multi-level collapse show" role="list" id="master-data" aria-expanded="false">
           <ul class="flex-column nav">
-            {{-- tinggal ganti segment --}}
-            <li class="nav-item {{ Request::segment(1) == 'biaya-pendaftaran' ? 'active' : '' }}">
-              <a href="/biaya-pendaftaran" class="nav-link" wire:navigate>
-                <span class="sidebar-text">Biaya Pendaftaran</span>
+            <li class="nav-item {{ Request::segment(1) == 'membership-plan' ? 'active' : '' }}">
+              <a href="/membership-plan" class="nav-link" wire:navigate >
+                <span class="sidebar-text">Membership Plan</span>
               </a>
             </li>
-            {{-- tinggal ganti segment --}}
-            <li class="nav-item {{ Request::segment(1) == 'kelas' ? 'active' : '' }}">
-              <a href="/kelas" class="nav-link" wire:navigate>
-                <span class="sidebar-text">Kelas</span>
-              </a>
-            </li>
-            {{-- tinggal ganti segment --}}
-            <li class="nav-item {{ Request::segment(1) == 'paket-member' ? 'active' : '' }}">
-              <a href="/paket-member" class="nav-link">
-                <span class="sidebar-text">Paket Member</span>
-              </a>
-            </li>
-            {{-- tinggal ganti segment --}}
-            <li class="nav-item {{ Request::segment(1) == 'paket-non-member' ? 'active' : '' }}">
-              <a href="/paket-non-member" class="nav-link">
-                <span class="sidebar-text">Paket Non Member</span>
-              </a>
-            </li>
-            <li class="nav-item {{ Request::segment(1) == 'barang' ? 'active' : '' }}">
-              <a href="/barang" class="nav-link">
-                <span class="sidebar-text">Barang</span>
-              </a>
-            </li>
-          <ul class="flex-column nav">
-            <li class="nav-item {{ Request::segment(1) == 'profile' ? 'active' : '' }}">
-              <a href="/profile" class="nav-link">
-                <span class="sidebar-text">Profile</span>
-              </a>
-            </li>
-            <li class="nav-item {{ Request::segment(1) == 'users' ? 'active' : '' }}">
-              <a href="/users" class="nav-link">
-                <span class="sidebar-text">User management</span>
-              </a>
-            </li>
-          </ul>
         </div>
       </li>
+      @endcan
       <li class="nav-item">
         <span
-          class="nav-link {{ Request::segment(1) !== 'member' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
-          data-bs-toggle="collapse" data-bs-target="#member">
+          class="nav-link show {{ Request::segment(1) !== 'membership' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
+          data-bs-toggle="collapse" data-bs-target="#membership">
           <span>
             <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
@@ -125,7 +85,7 @@
                   d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
                   clip-rule="evenodd"></path>
               </svg></span>
-            <span class="sidebar-text">Member</span>
+            <span class="sidebar-text">Membership</span>
           </span>
           <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
@@ -134,44 +94,52 @@
                 clip-rule="evenodd"></path>
             </svg></span>
         </span>
-        <div class="multi-level collapse {{ Request::segment(1) == 'data-member' ? 'show' : '' }}" role="list"
-          id="member" aria-expanded="false">
+        <div class="multi-level collapse {{ Request::segment(1) == 'member' ? 'show' : '' }}" role="list"
+          id="membership" aria-expanded="false">
+          @can('admin')
           <ul class="flex-column nav">
-            {{-- Tinggal ganti segment --}}
-            <li class="nav-item {{ Request::segment(1) == 'data-member' ? 'active' : '' }}">
-              <a class="nav-link" href="/data-member">
-                <span class="sidebar-text">Data Member</span>
+            <li class="nav-item {{ Request::segment(1) == 'member' ? 'active' : '' }}">
+              <a class="nav-link" wire:navigate href="/member">
+                <span class="sidebar-text">Member</span>
               </a>
             </li>
           </ul>
           <ul class="flex-column nav">
-            {{-- Tinggal ganti segment --}}
-            <li class="nav-item {{ Request::segment(1) == 'registrasi-member' ? 'active' : '' }}">
-              <a class="nav-link" href="/registrasi-member">
-                <span class="sidebar-text">Registrasi Member</span>
+            <li class="nav-item {{ Request::segment(1) == 'non-member' ? 'active' : '' }}">
+              <a class="nav-link" wire:navigate href="/non-member">
+                <span class="sidebar-text">Non Member</span>
               </a>
             </li>
           </ul>
           <ul class="flex-column nav">
-            {{-- Tinggal ganti segment --}}
-            <li class="nav-item {{ Request::segment(1) == 'pembayaran-member' ? 'active' : '' }}">
-              <a class="nav-link" href="pembayaran-member">
-                <span class="sidebar-text">Pembayaran Member</span>
+            <li class="nav-item {{ Request::segment(1) == 'payment' ? 'active' : '' }}">
+              <a class="nav-link" wire:navigate href="/payment">
+                <span class="sidebar-text">Payment</span>
               </a>
             </li>
           </ul>
+          @endcan
           <ul class="flex-column nav">
-            {{-- Tinggal ganti segment --}}
             <li class="nav-item {{ Request::segment(1) == 'scan-member' ? 'active' : '' }}">
-              <a class="nav-link" href="scan-member">
+              <a class="nav-link" wire:navigate href="/scan-member">
                 <span class="sidebar-text">Scan Member</span>
               </a>
             </li>
           </ul>
+          @can('admin')   
+          <ul class="flex-column nav">
+            {{-- Tinggal ganti segment --}}
+            <li class="nav-item {{ Request::segment(1) == 'kasir-dashboard' ? 'active' : '' }}">
+              <a class="nav-link" wire:navigate href="/kasir-dashboard">
+                <span class="sidebar-text">Kasir</span>
+              </a>
+            </li>
+          </ul>
+          @endcan
         </div>
       </li>
-      <li class="nav-item {{ Request::segment(1) == 'non-member' ? 'active' : '' }}">
-        <a href="/non-member" class="nav-link">
+      {{-- <li class="nav-item {{ Request::segment(1) == 'non-member' ? 'active' : '' }}">
+        <a href="/non-member" wire:navigate class="nav-link">
           <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
               <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
@@ -181,8 +149,8 @@
             </svg></span>
           <span class="sidebar-text">Non Member</span>
         </a>
-      </li>
-      <li class="nav-item">
+      </li> --}}
+      {{-- <li class="nav-item">
         <span
           class="nav-link {{ Request::segment(1) !== 'bootstrap-tables' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
           data-bs-toggle="collapse" data-bs-target="#transaksi-app">
@@ -205,25 +173,23 @@
         <div class="multi-level collapse {{ Request::segment(1) == 'bootstrap-tables' ? 'show' : '' }}" role="list"
           id="transaksi-app" aria-expanded="false">
           <ul class="flex-column nav">
-            {{-- Tinggal ganti segment --}}
             <li class="nav-item {{ Request::segment(1) == 'transaksi-penjualan' ? 'active' : '' }}">
-              <a class="nav-link" href="/transaksi-penjualan">
+              <a class="nav-link" wire:navigate href="/transaksi-penjualan">
                 <span class="sidebar-text">Transaksi Penjualan</span>
               </a>
             </li>
           </ul>
           <ul class="flex-column nav">
-            {{-- Tinggal ganti segment --}}
             <li class="nav-item {{ Request::segment(1) == 'data-penjualan' ? 'active' : '' }}">
-              <a class="nav-link" href="/data-penjualan">
+              <a class="nav-link" wire:navigate href="/data-penjualan">
                 <span class="sidebar-text">Data Penjualan</span>
               </a>
             </li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item {{ Request::segment(1) == 'transactions' ? 'active' : '' }}">
-        <a href="/transactions" class="nav-link">
+      </li> --}}
+      {{-- <li class="nav-item {{ Request::segment(1) == 'transactions' ? 'active' : '' }}">
+        <a href="/transactions" wire:navigate class="nav-link">
           <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
               <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
@@ -233,8 +199,8 @@
             </svg></span>
           <span class="sidebar-text">Transactions</span>
         </a>
-      </li>
-      <li class="nav-item">
+      </li> --}}
+      {{-- <li class="nav-item">
         <span
           class="nav-link {{ Request::segment(1) !== 'bootstrap-tables' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
           data-bs-toggle="collapse" data-bs-target="#submenu-app">
@@ -258,14 +224,14 @@
           id="submenu-app" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item {{ Request::segment(1) == 'bootstrap-tables' ? 'active' : '' }}">
-              <a class="nav-link" href="/bootstrap-tables">
+              <a class="nav-link" wire:navigate href="/bootstrap-tables">
                 <span class="sidebar-text">Bootstrap Tables</span>
               </a>
             </li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item">
+      </li> --}}
+      {{-- <li class="nav-item">
         <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
           data-bs-target="#submenu-pages">
           <span>
@@ -288,49 +254,49 @@
         <div class="multi-level collapse" role="list" id="submenu-pages" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('profile-example') }}">
+              <a class="nav-link" wire:navigate href="{{ route('profile-example') }}">
                 <span class="sidebar-text">Profile</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('login-example') }}">
+              <a class="nav-link" wire:navigate href="{{ route('login-example') }}">
                 <span class="sidebar-text">Sign In</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('register-example') }}">
+              <a class="nav-link" wire:navigate href="{{ route('register-example') }}">
                 <span class="sidebar-text">Sign Up</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('forgot-password-example') }}">
+              <a class="nav-link" wire:navigate href="{{ route('forgot-password-example') }}">
                 <span class="sidebar-text">Forgot password</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/reset-password-example">
+              <a class="nav-link" wire:navigate href="/reset-password-example">
                 <span class="sidebar-text">Reset password</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/lock">
+              <a class="nav-link" wire:navigate href="/lock">
                 <span class="sidebar-text">Lock</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/404">
+              <a class="nav-link" wire:navigate href="/404">
                 <span class="sidebar-text">404 Not Found</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/500">
+              <a class="nav-link" wire:navigate href="/500">
                 <span class="sidebar-text">500 Not Found</span>
               </a>
             </li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item">
+      </li> --}}
+      {{-- <li class="nav-item">
         <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
           data-bs-target="#submenu-components">
           <span>
@@ -355,33 +321,33 @@
           role="list" id="submenu-components" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item {{ Request::segment(1) == 'buttons' ? 'active' : '' }}">
-              <a class="nav-link" href="/buttons">
+              <a class="nav-link" wire:navigate href="/buttons">
                 <span class="sidebar-text">Buttons</span>
               </a>
             </li>
             <li class="nav-item {{ Request::segment(1) == 'notifications' ? 'active' : '' }}">
-              <a class="nav-link" href="/notifications">
+              <a class="nav-link" wire:navigate href="/notifications">
                 <span class="sidebar-text">Notifications</span>
               </a>
             </li>
             <li class="nav-item {{ Request::segment(1) == 'forms' ? 'active' : '' }}">
-              <a class="nav-link" href="/forms">
+              <a class="nav-link" wire:navigate href="/forms">
                 <span class="sidebar-text">Forms</span>
               </a>
             </li>
             <li class="nav-item {{ Request::segment(1) == 'modals' ? 'active' : '' }}">
-              <a class="nav-link" href="/modals">
+              <a class="nav-link" wire:navigate href="/modals">
                 <span class="sidebar-text">Modals</span>
               </a>
             </li>
             <li class="nav-item {{ Request::segment(1) == 'typography' ? 'active' : '' }}">
-              <a class="nav-link" href="/typography">
+              <a class="nav-link" wire:navigate href="/typography">
                 <span class="sidebar-text">Typography</span>
               </a>
             </li>
           </ul>
         </div>
-      </li>
+      </li> --}}
       <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
       <li class="nav-item">
         <a href="/documentation/getting-started/overview/index.html" target="_blank"

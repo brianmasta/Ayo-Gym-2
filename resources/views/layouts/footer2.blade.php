@@ -61,7 +61,7 @@
                         <a href="#">Contact</a>
                     </li>
                 </ul>
-                <p class="mb-0 text-center">© <span class="current-year"></span> - <a
+                <p class="mb-0 text-center">© <span class="current-year">2025</span> - <a
                         class="text-primary fw-normal" href="#" target="_blank">AYO GYM -
                     </a><a href="#" target="_blank">Member Management</a></p>
             </div>

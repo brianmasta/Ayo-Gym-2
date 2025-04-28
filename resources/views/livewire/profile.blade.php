@@ -133,19 +133,19 @@
             @endif
             <div class="card card-body border-0 shadow mb-4">
                 <h2 class="h5 mb-4">General information</h2>
-                <form wire:submit.prevent="save" action="#" method="POST">
+                <form wire:submit="save" action="#" method="POST">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div>
                                 <label for="first_name">First Name</label>
-                                <input wire:model="user.first_name" class="form-control" id="first_name" type="text"
+                                <input wire:model.live="user.first_name" class="form-control" id="first_name" type="text"
                                     placeholder="Enter your first name" required>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <div>
                                 <label for="last_name">Last Name</label>
-                                <input wire:model="user.last_name" class="form-control" id="last_name" type="text"
+                                <input wire:model.live="user.last_name" class="form-control" id="last_name" type="text"
                                     placeholder="Also your last name">
                             </div>
                         </div>
@@ -154,14 +154,14 @@
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input wire:model="user.email" class="form-control" id="email" type="email"
+                                <input wire:model.live="user.email" class="form-control" id="email" type="email"
                                     placeholder="name@company.com" disabled>
                             </div>
                             @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="gender">Gender</label>
-                            <select wire:model="user.gender" class="form-select mb-0" id="gender"
+                            <select wire:model.live="user.gender" class="form-select mb-0" id="gender"
                                 aria-label="Gender select example">
                                 <option selected>Choose...</option>
                                 <option value="Female">Female</option>
@@ -176,7 +176,7 @@
                         <div class="col-sm-9 mb-3">
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input wire:model="user.address" class="form-control" id="address" type="text"
+                                <input wire:model.live="user.address" class="form-control" id="address" type="text"
                                     placeholder="Enter your home address">
                             </div>
                             @error('user.address') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -184,7 +184,7 @@
                         <div class="col-sm-3 mb-3">
                             <div class="form-group">
                                 <label for="number">Number</label>
-                                <input wire:model="user.number" class="form-control" id="number" type="number"
+                                <input wire:model.live="user.number" class="form-control" id="number" type="number"
                                     placeholder="No.">
                             </div>
                             @error('user.number') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -194,7 +194,7 @@
                         <div class="col-sm-4 mb-3">
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input wire:model="user.city" class="form-control" id="city" type="text"
+                                <input wire:model.live="user.city" class="form-control" id="city" type="text"
                                     placeholder="City">
                             </div>
                             @error('user.city') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -202,7 +202,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="zip">ZIP</label>
-                                <input wire:model="user.ZIP" class="form-control" id="zip" type="tel" placeholder="ZIP">
+                                <input wire:model.live="user.ZIP" class="form-control" id="zip" type="tel" placeholder="ZIP">
                             </div>
                         </div>
                         @error('user.ZIP') <div class="invalid-feedback">{{ $message }}</div> @enderror
