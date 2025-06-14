@@ -72,6 +72,14 @@
               </a>
             </li>
         </div>
+        <div class="multi-level collapse show" role="list" id="master-data" aria-expanded="false">
+          <ul class="flex-column nav">
+            <li class="nav-item {{ Request::segment(1) == 'manage-users' ? 'active' : '' }}">
+              <a href="/manage-users" class="nav-link" wire:navigate >
+                <span class="sidebar-text">Manage User</span>
+              </a>
+            </li>
+        </div>
       </li>
       @endcan
       <li class="nav-item">
@@ -82,7 +90,7 @@
             <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
-                  d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
+                  d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.25-2.095c.478-.86.75-1.85.75-2.905a5.973 5.973 0 0 0-.75-2.906 4 4 0 1 1 0 5.811ZM15.466 20c.34-.588.535-1.271.535-2v-1a5.978 5.978 0 0 0-1.528-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.535Z"
                   clip-rule="evenodd"></path>
               </svg></span>
             <span class="sidebar-text">Membership</span>
@@ -126,7 +134,31 @@
               </a>
             </li>
           </ul>
-          @can('admin')   
+        </div>
+      </li>
+      {{-- Kasir --}}
+      <li class="nav-item">
+        <span
+          class="nav-link show {{ Request::segment(1) !== 'Kasir' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
+          data-bs-toggle="collapse" data-bs-target="#kasir">
+          <span>
+            <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M9 3c0-.55228.44772-1 1-1h8c.5523 0 1 .44772 1 1v3c0 .55228-.4477 1-1 1h-2v1h2c.5096 0 .9376.38314.9939.88957L19.8951 17H4.10498l.90116-8.11043C5.06241 8.38314 5.49047 8 6.00002 8H12V7h-2c-.55228 0-1-.44772-1-1V3Zm1.01 8H8.00002v2.01H10.01V11Zm.99 0h2.01v2.01H11V11Zm5.01 0H14v2.01h2.01V11Zm-8.00998 3H10.01v2.01H8.00002V14ZM13.01 14H11v2.01h2.01V14Zm.99 0h2.01v2.01H14V14ZM11 4h6v1h-6V4Z"
+                  clip-rule="evenodd"></path>
+              </svg></span>
+            <span class="sidebar-text">Kasir</span>
+          </span>
+          <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"></path>
+            </svg></span>
+        </span>
+        <div class="multi-level collapse {{ Request::segment(1) == 'kasir' ? 'show' : '' }}" role="list"
+          id="kasir" aria-expanded="false"> 
           <ul class="flex-column nav">
             {{-- Tinggal ganti segment --}}
             <li class="nav-item {{ Request::segment(1) == 'kasir-dashboard' ? 'active' : '' }}">
@@ -135,219 +167,8 @@
               </a>
             </li>
           </ul>
-          @endcan
         </div>
       </li>
-      {{-- <li class="nav-item {{ Request::segment(1) == 'non-member' ? 'active' : '' }}">
-        <a href="/non-member" wire:navigate class="nav-link">
-          <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
-              <path fill-rule="evenodd"
-                d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"
-                clip-rule="evenodd"></path>
-            </svg></span>
-          <span class="sidebar-text">Non Member</span>
-        </a>
-      </li> --}}
-      {{-- <li class="nav-item">
-        <span
-          class="nav-link {{ Request::segment(1) !== 'bootstrap-tables' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
-          data-bs-toggle="collapse" data-bs-target="#transaksi-app">
-          <span>
-            <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
-                  clip-rule="evenodd"></path>
-              </svg></span>
-            <span class="sidebar-text">Transaksi</span>
-          </span>
-          <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"></path>
-            </svg></span>
-        </span>
-        <div class="multi-level collapse {{ Request::segment(1) == 'bootstrap-tables' ? 'show' : '' }}" role="list"
-          id="transaksi-app" aria-expanded="false">
-          <ul class="flex-column nav">
-            <li class="nav-item {{ Request::segment(1) == 'transaksi-penjualan' ? 'active' : '' }}">
-              <a class="nav-link" wire:navigate href="/transaksi-penjualan">
-                <span class="sidebar-text">Transaksi Penjualan</span>
-              </a>
-            </li>
-          </ul>
-          <ul class="flex-column nav">
-            <li class="nav-item {{ Request::segment(1) == 'data-penjualan' ? 'active' : '' }}">
-              <a class="nav-link" wire:navigate href="/data-penjualan">
-                <span class="sidebar-text">Data Penjualan</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> --}}
-      {{-- <li class="nav-item {{ Request::segment(1) == 'transactions' ? 'active' : '' }}">
-        <a href="/transactions" wire:navigate class="nav-link">
-          <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
-              <path fill-rule="evenodd"
-                d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-                clip-rule="evenodd"></path>
-            </svg></span>
-          <span class="sidebar-text">Transactions</span>
-        </a>
-      </li> --}}
-      {{-- <li class="nav-item">
-        <span
-          class="nav-link {{ Request::segment(1) !== 'bootstrap-tables' ? 'collapsed' : '' }} d-flex justify-content-between align-items-center"
-          data-bs-toggle="collapse" data-bs-target="#submenu-app">
-          <span>
-            <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                  clip-rule="evenodd"></path>
-              </svg></span>
-            <span class="sidebar-text">Tables</span>
-          </span>
-          <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"></path>
-            </svg></span>
-        </span>
-        <div class="multi-level collapse {{ Request::segment(1) == 'bootstrap-tables' ? 'show' : '' }}" role="list"
-          id="submenu-app" aria-expanded="false">
-          <ul class="flex-column nav">
-            <li class="nav-item {{ Request::segment(1) == 'bootstrap-tables' ? 'active' : '' }}">
-              <a class="nav-link" wire:navigate href="/bootstrap-tables">
-                <span class="sidebar-text">Bootstrap Tables</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> --}}
-      {{-- <li class="nav-item">
-        <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-          data-bs-target="#submenu-pages">
-          <span>
-            <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
-                  clip-rule="evenodd"></path>
-                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
-              </svg></span>
-            <span class="sidebar-text">Page examples</span>
-          </span>
-          <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"></path>
-            </svg></span>
-        </span>
-        <div class="multi-level collapse" role="list" id="submenu-pages" aria-expanded="false">
-          <ul class="flex-column nav">
-            <li class="nav-item">
-              <a class="nav-link" wire:navigate href="{{ route('profile-example') }}">
-                <span class="sidebar-text">Profile</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" wire:navigate href="{{ route('login-example') }}">
-                <span class="sidebar-text">Sign In</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" wire:navigate href="{{ route('register-example') }}">
-                <span class="sidebar-text">Sign Up</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" wire:navigate href="{{ route('forgot-password-example') }}">
-                <span class="sidebar-text">Forgot password</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" wire:navigate href="/reset-password-example">
-                <span class="sidebar-text">Reset password</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" wire:navigate href="/lock">
-                <span class="sidebar-text">Lock</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" wire:navigate href="/404">
-                <span class="sidebar-text">404 Not Found</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" wire:navigate href="/500">
-                <span class="sidebar-text">500 Not Found</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> --}}
-      {{-- <li class="nav-item">
-        <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-          data-bs-target="#submenu-components">
-          <span>
-            <span class="sidebar-icon"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
-                <path fill-rule="evenodd"
-                  d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                  clip-rule="evenodd"></path>
-              </svg></span>
-            <span class="sidebar-text">Components</span>
-          </span>
-          <span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"></path>
-            </svg></span>
-        </span>
-        <div
-          class="multi-level collapse {{ Request::segment(1) == 'buttons' || Request::segment(1) == 'notifications' || Request::segment(1) == 'forms' || Request::segment(1) == 'modals' || Request::segment(1) == 'typography' ? 'show' : '' }}"
-          role="list" id="submenu-components" aria-expanded="false">
-          <ul class="flex-column nav">
-            <li class="nav-item {{ Request::segment(1) == 'buttons' ? 'active' : '' }}">
-              <a class="nav-link" wire:navigate href="/buttons">
-                <span class="sidebar-text">Buttons</span>
-              </a>
-            </li>
-            <li class="nav-item {{ Request::segment(1) == 'notifications' ? 'active' : '' }}">
-              <a class="nav-link" wire:navigate href="/notifications">
-                <span class="sidebar-text">Notifications</span>
-              </a>
-            </li>
-            <li class="nav-item {{ Request::segment(1) == 'forms' ? 'active' : '' }}">
-              <a class="nav-link" wire:navigate href="/forms">
-                <span class="sidebar-text">Forms</span>
-              </a>
-            </li>
-            <li class="nav-item {{ Request::segment(1) == 'modals' ? 'active' : '' }}">
-              <a class="nav-link" wire:navigate href="/modals">
-                <span class="sidebar-text">Modals</span>
-              </a>
-            </li>
-            <li class="nav-item {{ Request::segment(1) == 'typography' ? 'active' : '' }}">
-              <a class="nav-link" wire:navigate href="/typography">
-                <span class="sidebar-text">Typography</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> --}}
       <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
       <li class="nav-item">
         <a href="/documentation/getting-started/overview/index.html" target="_blank"

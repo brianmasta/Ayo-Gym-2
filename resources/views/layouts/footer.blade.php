@@ -55,12 +55,12 @@
                 <li class="list-inline-item px-0 px-sm-2">
                     <a href="#">About</a>
                 </li>
-                <li class="list-inline-item px-0 px-sm-2">
+                {{-- <li class="list-inline-item px-0 px-sm-2">
                     <a href="#">Themes</a>
                 </li>
                 <li class="list-inline-item px-0 px-sm-2">
                     <a href="#">Blog</a>
-                </li>
+                </li> --}}
                 <li class="list-inline-item px-0 px-sm-2">
                     <a href="#">Contact</a>
                 </li>

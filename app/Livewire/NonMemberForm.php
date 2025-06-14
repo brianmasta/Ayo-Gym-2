@@ -26,6 +26,9 @@ class NonMemberForm extends Component
     {
         $plan = MembershipPlan::find($this->membership_plan_id);
 
+        // Ambil user yang sedang login
+        $userId = auth()->user()->id;
+
         $nonMember = NonMember::create([
             'name' => $this->name,
             'phone' => $this->phone,
@@ -41,6 +44,7 @@ class NonMemberForm extends Component
                 'amount' => $plan->price,
                 'method' => 'cash',
                 'status' => 'success',
+                'user_id'=> $userId,
             ]);
 
             session()->forget(['non_member_id', 'membership_plan_id', 'amount', 'order_id']);
@@ -80,6 +84,8 @@ class NonMemberForm extends Component
     #[On('midtransSuccess')]
     public function handleMidtransSuccess($result)
     {
+        // Ambil user yang sedang login
+        $userId = auth()->user()->id;
 
         $nonMemberId = session('non_member_id');
         $membershipPlanId = session('membership_plan_id');
@@ -96,6 +102,7 @@ class NonMemberForm extends Component
             'order_id' => $orderId,
             'transaction_id' => $result['transaction_id'], // dari midtrans
             'payment_type' => $result['payment_type'],
+            'user_id'=> $userId,
             // 'paid_at' => now(),
         ]);
 

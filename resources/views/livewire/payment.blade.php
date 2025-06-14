@@ -21,20 +21,9 @@
             <h2 class="h4">Daftar Payment</h2>
             {{-- <p class="mb-0">Your web analytics dashboard template.</p> --}}
         </div>
-        {{-- <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="/payment-form" wire:navigate class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
-                <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
-                    </path>
-                </svg>
-                Tambah
-            </a>
-            <div class="btn-group ms-2 ms-lg-3">
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
-            </div>
-        </div> --}}
+        <div class="btn-toolbar mb-2 mb-md-0">
+
+        </div>
     </div>
     <div class="table-settings mb-4">
         <div class="row justify-content-between align-items-center">
@@ -79,24 +68,26 @@
                 </div>
             </div>
             <div class="col-3 col-lg-4 d-flex justify-content-end">
-                {{ $payment->links() }}
+                {{-- <a href="/payment-form" wire:navigate class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                        </path>
+                    </svg>
+                    Tambah
+                </a> --}}
+                <div class="btn-group ms-2 ms-lg-3">
+                    <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
+                    {{-- <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button> --}}
+                    <a type="button" class="btn btn-sm btn-outline-gray-600" href="/payment-report">Cetak</a>
+                </div>
             </div>
         </div>
     </div>
-    {{-- <div class="alert alert-success" role="alert">
-        Data Berhasil Ditambahkan!
-    </div> --}}
     <div class="card card-body shadow border-0 table-wrapper table-responsive">
         <table class="table user-table table-hover align-items-center">
-            <thead>
+            <thead class="thead-light">
                 <tr>
-                    <th class="border-bottom">
-                        <div class="form-check dashboard-check">
-                            <input class="form-check-input" type="checkbox" value="" id="userCheck55">
-                            <label class="form-check-label" for="userCheck55">
-                            </label>
-                        </div>
-                    </th>
                     <th class="border-bottom">No</th>
                     <th class="border-bottom">Action</th>
                     <th class="border-bottom">Member ID</th>
@@ -112,14 +103,7 @@
                 @foreach ($payment as $item)
                 <tr>
                     <td>
-                        <div class="form-check dashboard-check">
-                            <input class="form-check-input" type="checkbox" value="" id="userCheck1">
-                            <label class="form-check-label" for="userCheck1">
-                            </label>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="fw-normal">1</span>
+                        <span class="fw-normal">{{ $payment->firstItem() + $loop->index }}</span>
                     </td>
                     <td>
                     <div class="btn-group">
@@ -178,6 +162,8 @@
             </tbody>
         </table>
     </div>
+    <br>
+    {{ $payment->links() }}
             {{-- Modal Edit Payment--}}
             <div wire:ignore.self class="modal fade" id="editModal" tabindex="-1">
                 <div class="modal-dialog">

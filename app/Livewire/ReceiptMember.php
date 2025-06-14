@@ -12,7 +12,7 @@ class ReceiptMember extends Component
     public function mount($orderId)
     {
 
-        $this->payment = Payment::where('member_id', $orderId)->with('member', 'membershipPlan')->firstOrFail();
+        $this->payment = Payment::where('order_id', $orderId)->with('member', 'membershipPlan')->firstOrFail();
     }
 
     public function render()

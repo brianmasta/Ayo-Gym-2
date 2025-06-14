@@ -128,6 +128,9 @@ class MemberForm extends Component
             'start_date' => Carbon::now()->toDateString(),
             'end_date' => now()->addDays($duration_days),
         ]);
+
+        // Ambil user yang sedang login
+        $userId = auth()->user()->id;
     
         // Alur berdasarkan metode pembayaran
         if ($this->method === 'cash') {
@@ -140,6 +143,7 @@ class MemberForm extends Component
                 'status' => 'success',
                 'order_id' => 'CASH-' . now()->timestamp,
                 'payment_date' => now(),
+                'user_id'=> $userId,
             ]);
 
             // session()->flash('message', 'Pembayaran berhasil dan member telah aktif.');
@@ -199,6 +203,8 @@ class MemberForm extends Component
         $midtrans_transaction_id = $result['transaction_id'];
 
         
+        // Ambil user yang sedang login
+        $userId = auth()->user()->id;
 
         \App\Models\Payment::create([
             'member_id' => $memberId,
@@ -209,15 +215,16 @@ class MemberForm extends Component
             'status' => 'success',
             'order_id' => $order_id,
             'payment_date' => now(),
-            'midtrans_transaction_id' => $midtrans_transaction_id, // dari midtrans
+            'user_id'=> $userId,
+            'transaction_id' => $midtrans_transaction_id, // dari midtrans
             'payment_type' => $payment_type,
-            'raw_response' => json_encode($result), // Simpan data tambahan dari Midtrans
+            // 'raw_response' => json_encode($result), // Simpan data tambahan dari Midtrans
         ]);
 
         session()->flash('message', 'Pembayaran berhasil dan member telah aktif.');
         $this->resetForm();
     
-        $this->dispatch('open-receipt-member', orderId: $memberId);
+        $this->dispatch('open-receipt-member', orderId: $order_id);
     }
 
 

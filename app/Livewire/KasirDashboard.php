@@ -15,10 +15,16 @@ class KasirDashboard extends Component
     public $search, $selectedMember;
     public $membership_plan_id, $method;
     public $plans;
+    public $payments;
 
     public function mount()
     {
+        // Ambil ID user yang sedang login
+        $userId = auth()->user()->id;
+
         $this->plans = MembershipPlan::all();
+        // Ambil data pembayaran berdasarkan user_id
+        $this->payments = Payment::where('user_id', $userId)->with('member', 'membershipPlan', 'nonMember')->get();
     }
 
     public function searchMember()
@@ -42,6 +48,10 @@ class KasirDashboard extends Component
     {
         $plan = MembershipPlan::find($this->membership_plan_id);
 
+        // Ambil user yang sedang login
+        $userId = auth()->user()->id;
+
+
         // Proses pembayaran
         if ($this->method === 'cash') {
             Payment::create([
@@ -50,6 +60,7 @@ class KasirDashboard extends Component
                 'amount' => $plan->price,
                 'method' => 'cash',
                 'status' => 'success',
+                'user_id'=> $userId,
             ]);
 
             // Perpanjang expired_at
@@ -109,8 +120,9 @@ class KasirDashboard extends Component
         $amount = session('amount');
         $member_code = session('member_code');
 
-        // $orderId = session('order_id');
-
+        $orderId = session('order_id');
+        // Ambil user yang sedang login
+        $userId = auth()->user()->id;
 
         $plan = MembershipPlan::find($membershipPlanId);
 
@@ -120,7 +132,9 @@ class KasirDashboard extends Component
             'amount' => $amount,
             'method' => 'online',
             'status' => 'success',
-            // 'order_id' => $orderId,
+            'user_id'=> $userId,
+            'member_id'=> $memberId,
+            'order_id'=> $orderId,
         ]);
 
         Member::find($memberId)->update([
@@ -131,7 +145,11 @@ class KasirDashboard extends Component
         session()->forget(['member_code', 'membership_plan_id', 'amount']);
 
         session()->flash('message', 'Pembayaran berhasil via Midtrans.');
-        $this->dispatch('hidden.bs.modal');
+        // $this->dispatch('hidden.bs.modal');
+
+        // dd($orderId);
+    
+        $this->dispatch('open-receipt', orderId: $orderId);
     }
 
     public function render()

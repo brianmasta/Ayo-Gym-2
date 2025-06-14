@@ -20,5 +20,10 @@ class Member extends Model
         return $this->belongsTo(MembershipPlan::class);
     }
 
+    public function scopeExpired($query)
+    {
+        return $query->whereDate('end_date', '<=', now());
+    }
+
 
 }

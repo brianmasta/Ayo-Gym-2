@@ -22,18 +22,7 @@
             {{-- <p class="mb-0">Your web analytics dashboard template.</p> --}}
         </div>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="/member-form" wire:navigate class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
-                <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
-                    </path>
-                </svg>
-                Tambah
-            </a>
-            {{-- <div class="btn-group ms-2 ms-lg-3">
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
-            </div> --}}
+
         </div>
     </div>
     <div class="table-settings mb-4">
@@ -68,7 +57,18 @@
                 </div>
             </div>
             <div class="col-3 col-lg-4 d-flex justify-content-end">
-                {{ $members->links() }}
+                <a href="/member-form" wire:navigate class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                        </path>
+                    </svg>
+                    Tambah
+                </a>
+                <div class="btn-group ms-2 ms-lg-3">
+                    <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
+                    <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
+                </div>
             </div>
         </div>
     </div>
@@ -83,11 +83,7 @@
             <thead class="thead-light">
                 <tr>
                     <th class="border-bottom">
-                        <div class="form-check dashboard-check">
-                            <input class="form-check-input" type="checkbox" value="" id="userCheck55">
-                            <label class="form-check-label" for="userCheck55">
-                            </label>
-                        </div>
+                        No
                     </th>
                     <th class="border-bottom">Action</th>
                     <th class="border-bottom" wire:click="sort('member_code')" style="cursor: pointer;">
@@ -110,29 +106,103 @@
                             @endif
                         @endif
                     </th>
-                    <th class="border-bottom">
-                        <a href="#" wire:click="sortBy('email')">Email</a>
+                    <th class="border-bottom" wire:click="sort('email')" style="cursor: pointer;">
+                        Email
+                        @if ($sortBy === 'email')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
                     </th>
-                    <th class="border-bottom">Address</th>
-                    <th class="border-bottom">Tanggal Lahir</th>
-                    <th class="border-bottom">Gender</th>
-                    <th class="border-bottom">Tanggal Bergabung</th>
-                    <th class="border-bottom">Status</th>
-                    <th class="border-bottom">Paket</th>
-                    <th class="border-bottom">Tanggal Mulai</th>
-                    <th class="border-bottom">Tanggal Selesai</th>
- 
+                    <th class="border-bottom" wire:click="sort('address')" style="cursor: pointer;">
+                        Address
+                        @if ($sortBy === 'address')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
+                    </th>
+                    <th class="border-bottom" wire:click="sort('birthdate')" style="cursor: pointer;">
+                        Tanggal Lahir
+                        @if ($sortBy === 'birthdate')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
+                    </th>
+                    <th class="border-bottom" wire:click="sort('gender')" style="cursor: pointer;">
+                        Gender
+                        @if ($sortBy === 'gender')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
+                    </th>
+                    <th class="border-bottom" wire:click="sort('join_date')" style="cursor: pointer;">
+                        Tanggal Bergabung
+                        @if ($sortBy === 'join_date')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
+                    </th>
+                    <th class="border-bottom" wire:click="sort('status')" style="cursor: pointer;">
+                        Status
+                        @if ($sortBy === 'status')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
+                    </th>
+                    <th class="border-bottom" wire:click="sort('membership_plan_id')" style="cursor: pointer;">
+                        Paket
+                        @if ($sortBy === 'membership_plan_id')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
+                    </th>
+                    <th class="border-bottom" wire:click="sort('start_date')" style="cursor: pointer;">
+                        Tanggal Mulai
+                        @if ($sortBy === 'start_date')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
+                    </th>
+                    <th class="border-bottom" wire:click="sort('end_date')" style="cursor: pointer;">
+                        Tanggal Selesai
+                        @if ($sortBy === 'end_date')
+                            @if ($sortDirection === 'asc')
+                                <span>&uarr;</span>
+                            @else
+                                <span>&darr;</span>
+                            @endif
+                        @endif
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($members as $member)
                 <tr>
                     <td>
-                        <div class="form-check dashboard-check">
-                            <input class="form-check-input" type="checkbox" value="" id="userCheck1">
-                            <label class="form-check-label" for="userCheck1">
-                            </label>
-                        </div>
+                        <span class="fw-normal">{{ $members->firstItem() + $loop->index }}</span>
                     </td>
                     <td>
                         <div class="btn-group">
@@ -204,6 +274,8 @@
         <div>
         </div>
     </div>
+    <br>
+    {{ $members->links() }}
         {{-- Modal Edit --}}
         <div wire:ignore.self class="modal fade" id="editModal" tabindex="-1">
             <div class="modal-dialog">

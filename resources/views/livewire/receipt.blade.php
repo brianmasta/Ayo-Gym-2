@@ -117,7 +117,14 @@
         <div class="text-center mt-3 no-print">
             <a href="{{ url('/receipt/' . $payment->order_id . '/pdf') }}" class="btn btn-outline-primary">Download PDF</a>
             <button onclick="window.print()" class="btn btn-outline-success">Cetak</button>
-            <a href="/non-member" class="btn btn-outline-secondary">Kembali</a>
+            <a href="
+            @can('admin')
+            /non-member
+            @endcan
+            @can('kasir')
+            /kasir-dashboard
+            @endcan
+            " class="btn btn-outline-secondary">Kembali</a>
         </div>
     </div>
 </div>

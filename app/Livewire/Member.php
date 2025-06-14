@@ -40,13 +40,19 @@ class Member extends Component
     {
         $this->resetPage();
     }
+
     public function render()
     {
         $members = ModelsMember::query()
-        ->where('name', 'like', '%' . $this->search . '%')
-        ->orWhere('email', 'like', '%' . $this->search . '%')
+        ->when($this->search, function ($query) {
+            $query->where(function($query) {
+                $query->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('email', 'like', '%' . $this->search . '%');
+            });
+        })
         ->orderBy($this->sortBy, $this->sortDirection)
         ->paginate($this->perPage);
+        
         return view('livewire.member', compact('members'));
     }
 

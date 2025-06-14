@@ -170,8 +170,18 @@
                 alert("Order ID tidak ditemukan");
                 return;
             }
+
+            let userRole = "{{ auth()->user()->role }}";
+
             window.open(`/receipt-member/${orderId}`, '_blank');
-            window.location.href = "/member";
+
+            if (userRole === "/member") {
+            window.location.href = "/dashboard-admin";
+            } else {
+                window.location.href = "/kasir-dashboard";
+            }
+
+            // window.location.href = "/member";
         });
 
     });

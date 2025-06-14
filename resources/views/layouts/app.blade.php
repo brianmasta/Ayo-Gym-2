@@ -4,12 +4,13 @@
         $adminRoutes = [
             'dashboard', 'scan-member', 'non-member', 'edit-biaya-pendaftaran', 'membership-plan', 'member',
             'payment', 'payment-form', 'membership-plan-form', 'member-form', 'member-confirmation',
-            'member-card', 'non-member-form', 'receipt', 'receipt-member','kasir-dashboard', 'midtrans-payment'
+            'member-card', 'non-member-form', 'receipt', 'receipt-member','kasir-dashboard', 'midtrans-payment', 'member-expired-Alert',
+            'manage-users', 'payment-report'
         ];
 
         $kasirRoutes = [
             'dashboard', 'kasir-dashboard', 'non-member', 'payment', 'receipt', 'receipt-member', 'scan-member','dashboard','member-form', 
-            'member-confirmation','member-card','non-member-form', 'midtrans-payment'
+            'member-confirmation','member-card','non-member-form', 'midtrans-payment', 'member-expired-Alert', 'receipt', 'receipt-member'
         ];
     @endphp
 

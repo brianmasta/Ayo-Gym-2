@@ -125,7 +125,14 @@
         <div class="text-center mt-3 no-print">
             <a href="{{ url('/member-card/'. $payment->Member->id) }}" class="btn btn-outline-primary">Cetak ID Member</a>
             <button onclick="window.print()" class="btn btn-outline-success">Cetak</button>
-            <a href="/member" class="btn btn-outline-secondary">Kembali</a>
+            <a href="
+            @can('admin')
+            /non-member
+            @endcan
+            @can('kasir')
+            /kasir-dashboard
+            @endcan
+            " class="btn btn-outline-secondary">Kembali</a>
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\ManageUsers;
 use App\Livewire\MemberCard;
 use App\Livewire\MemberConfirmation;
 use App\Livewire\MemberForm;
@@ -7,6 +8,7 @@ use App\Livewire\MembershipPlanForm;
 use App\Livewire\MidtransPayment;
 use App\Livewire\NonMemberForm;
 use App\Livewire\PaymentForm;
+use App\Livewire\PaymentReport;
 use App\Livewire\Receipt;
 use App\Livewire\Err404;
 use App\Livewire\Err500;
@@ -71,7 +73,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/member-form', MemberForm::class)->name('member-form');
     Route::get('/member-confirmation', MemberConfirmation::class)->name('member-confirmation');
     Route::get('/midtrans-payment', MidtransPayment::class)->name('midtrans-payment');
+    Route::get('/manage-users', ManageUsers::class)->name('manage-users');
 
+    Route::get('/payment-report', PaymentReport::class)->name('payment-report');
 });
 
 

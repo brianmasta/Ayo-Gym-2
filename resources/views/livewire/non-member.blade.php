@@ -21,20 +21,7 @@
             <h2 class="h4">Data Non Member</h2>
             {{-- <p class="mb-0">Your web analytics dashboard template.</p> --}}
         </div>
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="/non-member-form" wire:navigate class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
-                <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
-                    </path>
-                </svg>
-                Tambah
-            </a>
-            <div class="btn-group ms-2 ms-lg-3">
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
-            </div>
-        </div>
+
     </div>
     <div class="table-settings mb-4">
         <div class="row justify-content-between align-items-center">
@@ -68,7 +55,18 @@
                 </div>
             </div>
             <div class="col-4 col-lg-4 d-flex justify-content-end">
-                {{ $nonMember->links() }}
+                <a href="/non-member-form" wire:navigate class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+                    <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                        </path>
+                    </svg>
+                    Tambah
+                </a>
+                <div class="btn-group ms-2 ms-lg-3">
+                    <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
+                    <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
+                </div>
             </div>
         </div>
     </div>
@@ -142,6 +140,8 @@
             </tbody>
         </table>
     </div>
+    <br>
+    {{ $nonMember->links() }}
     <!-- Modal Edit Non Member -->
     <div wire:ignore.self class="modal fade" id="editModal" tabindex="-1">
         <div class="modal-dialog">

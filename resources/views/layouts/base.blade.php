@@ -145,7 +145,8 @@
     @livewireScripts
         {{ $slot }}
 
-
+    <!-- Stack untuk scripts -->
+    @stack('scripts')
 </body>
 
 </html>
