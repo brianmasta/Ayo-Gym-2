@@ -38,7 +38,7 @@
                                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                                         </svg></span>
                                     <input wire:model.live="email" type="email" class="form-control"
-                                        placeholder="admin@volt.com" id="email" autofocus required>
+                                        placeholder="admin@ag.com" id="email" autofocus required>
                                 </div>
                                 @error('email') <div wire:key="form" class="invalid-feedback"> {{$message}} </div>
                                 @enderror
