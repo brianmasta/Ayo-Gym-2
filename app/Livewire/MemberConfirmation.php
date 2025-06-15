@@ -129,7 +129,7 @@ class MemberConfirmation extends Component
         $member = $this->createMemberAndPayment($data, 'midtrans', $result);
         session()->forget('member_data');
     
-        // ⬇️ Redirect ke receipt page
+        // Redirect ke receipt page
         return redirect()->route('receipt-member', $member->id);
     }
 

@@ -14,6 +14,7 @@ class Payment extends Model
         'membership_plan_id',
         'amount',
         'method',
+        'status',
         'payment_date', 'order_id', 'transaction_id','payment_type','raw_response','user_id',
     ];
     
