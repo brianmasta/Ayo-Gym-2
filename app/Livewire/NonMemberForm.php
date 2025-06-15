@@ -36,6 +36,8 @@ class NonMemberForm extends Component
         ]);
 
         $plan = MembershipPlan::find($this->membership_plan_id);
+        
+        $order_id = 'CASH-' . now()->timestamp;
 
         if ($this->method === 'cash') {
             Payment::create([
@@ -44,6 +46,10 @@ class NonMemberForm extends Component
                 'amount' => $plan->price,
                 'method' => 'cash',
                 'status' => 'success',
+                'order_id' => $order_id,
+                'payment_type' => 'cash',
+                'payment_date' => now(),
+                'transaction_id' => 'CASH-' . now()->timestamp,
                 'user_id'=> $userId,
             ]);
 
@@ -97,7 +103,7 @@ class NonMemberForm extends Component
             'non_member_id' => $nonMemberId,
             'membership_plan_id' => $membershipPlanId,
             'amount' => $amount,
-            'method' => 'online',
+            'method' => 'midtrans',
             'status' => 'success',
             'order_id' => $orderId,
             'transaction_id' => $result['transaction_id'], // dari midtrans
