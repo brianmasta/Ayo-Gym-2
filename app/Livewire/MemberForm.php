@@ -131,6 +131,8 @@ class MemberForm extends Component
 
         // Ambil user yang sedang login
         $userId = auth()->user()->id;
+
+        $order_id = 'CASH-' . now()->timestamp;
     
         // Alur berdasarkan metode pembayaran
         if ($this->method === 'cash') {
@@ -141,19 +143,17 @@ class MemberForm extends Component
                 'amount' => $price,
                 'method' => 'cash',
                 'status' => 'success',
-                'order_id' => 'CASH-' . now()->timestamp,
+                'order_id' => $order_id,
+                'payment_type' => 'cash',
                 'payment_date' => now(),
+                'transaction_id' => 'CASH-' . now()->timestamp,
                 'user_id'=> $userId,
             ]);
-
-            // session()->flash('message', 'Pembayaran berhasil dan member telah aktif.');
-            // $this->resetForm();
-            // return redirect()->to('/member');
 
             session()->flash('message', 'Pembayaran berhasil dan member telah aktif.');
             $this->resetForm();
         
-            $this->dispatch('open-receipt-member', orderId:  $member->id);
+            $this->dispatch('open-receipt-member', orderId:  $order_id);
 
         } else {
             $orderId = 'MBR-' . Str::uuid();
@@ -168,8 +168,6 @@ class MemberForm extends Component
                     'email' => $member->email,
                 ],
             ];
-
-            // dd  ($payload);
 
             $snapToken = Snap::getSnapToken($payload);
             
