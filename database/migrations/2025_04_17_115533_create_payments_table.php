@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('member_code')->nullable();
             $table->foreignId('membership_plan_id')->constrained('membership_plans')->onDelete('cascade');
             $table->decimal('amount', 10, 2);
-            $table->enum('method', ['cash', 'card', 'online']);
+            $table->enum('method', ['cash', 'midtrans']);
             $table->timestamp('payment_date')->useCurrent();
             $table->string('status')->default('pending');
             $table->unsignedBigInteger('user_id');
