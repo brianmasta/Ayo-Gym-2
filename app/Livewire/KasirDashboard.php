@@ -50,7 +50,7 @@ class KasirDashboard extends Component
 
         // Ambil user yang sedang login
         $userId = auth()->user()->id;
-
+        $order_id = 'CASH-' . now()->timestamp;
 
         // Proses pembayaran
         if ($this->method === 'cash') {
@@ -60,6 +60,10 @@ class KasirDashboard extends Component
                 'amount' => $plan->price,
                 'method' => 'cash',
                 'status' => 'success',
+                'order_id' => $order_id,
+                'payment_type' => 'cash',
+                'payment_date' => now(),
+                'transaction_id' => 'CASH-' . now()->timestamp,
                 'user_id'=> $userId,
             ]);
 
@@ -119,6 +123,8 @@ class KasirDashboard extends Component
         $membershipPlanId = session('membership_plan_id');
         $amount = session('amount');
         $member_code = session('member_code');
+        $payment_type = $result['payment_type'];
+        $midtrans_transaction_id = $result['transaction_id'];
 
         $orderId = session('order_id');
         // Ambil user yang sedang login
@@ -130,10 +136,12 @@ class KasirDashboard extends Component
             'member_code' => $member_code,
             'membership_plan_id' => $membershipPlanId,
             'amount' => $amount,
-            'method' => 'online',
+            'method' => 'midtrans',
             'status' => 'success',
             'user_id'=> $userId,
             'member_id'=> $memberId,
+            'transaction_id' => $midtrans_transaction_id, // dari midtrans
+            'payment_type' => $payment_type,
             'order_id'=> $orderId,
         ]);
 
